@@ -1,0 +1,36 @@
+﻿<div ng-app="hangmanapp" ng-controller="hangmancontroller" ng-cloak>
+    <div style="text-align: center">
+        <div id="divallbutlogo">
+            <md-content class="md-padding">
+                <img src="@Url.Content("~/Content/hangmanlogo.png")" style="width: 6cm" />
+                <md-input-container style="margin: 0 auto; width: 8cm" class="md-block" ng-hide="angBoolGameHasStarted">
+                    <label>Enter key from other player</label>
+                    <input ng-model="angKeyForWordFromService">
+                </md-input-container>
+                <p><md-button ng-hide="angBooleanToRestart" ng-disabled="!angKeyForWordFromService" class="md-raised md-primary" ng-click="start()">PLAY</md-button></p>
+                <p><md-button ng-show="angBooleanToRestart" class="md-raised md-primary" onclick="window.location.reload(false)">START OVER</md-button></p>
+                <div ng-show="angBoolGameHasStarted">
+                    <h1 class="md-display-3" style="font-family: monospace">{{angCurrentWordState}}</h1>
+                    <form>
+                        <p>
+                            <input type="text" ng-model="angLetterThatWasEntered" maxlength="1" style="border-radius: 10%; font-size:24pt; line-height: 50pt; text-align: center; width: 50pt; border:1px; border-color: #E91E63; border-style: solid"></input>
+                        </p>
+                        <md-button class="md-accent md-raised md-hue-4" ng-click="letterEntered()" type="submit" style="margin-bottom: 2cm">CHECK</md-button>
+                    </form>
+
+                    <div ng-model="angArrayOfWrongLetters">
+                        Incorrect guesses:
+                        <p>
+                            <label ng-repeat="w in angArrayOfWrongLetters">
+                                <md-button class="md-fab" ng-disabled="true" aria-label="Comment">{{w}}</md-button>
+                            </label>
+                        </p>
+                    </div>
+
+                    <h3>{{angFinalResult}}</h3>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+

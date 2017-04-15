@@ -5,11 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
+//using System.Web.Http.Cors;
 
 namespace GTWWebService.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class KeyWordPairsController : ApiController
     {
 
@@ -28,12 +27,9 @@ namespace GTWWebService.Controllers
         [HttpPost]
         public IHttpActionResult CreateKeyWordPair(KeyWordPair kwp)
         {
-            Console.WriteLine("received create request");
             kwp.Key = Guid.NewGuid().ToString("n").Substring(0, 15);
-            // Temp
             GWTDbContext.GetSingletonInstance().KeyWordPairs.Add(kwp);
             GWTDbContext.GetSingletonInstance().SaveChanges();
-            //TODO DB context save + save changes 
             return Created(new Uri(Request.RequestUri + "/" + kwp.Key), kwp);
         }
     }

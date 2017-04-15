@@ -1,0 +1,23 @@
+﻿<div ng-app="hangmanapp" ng-controller="hangmancontroller" ng-cloak>
+    <div style="text-align: center">
+        <div id="divallbutlogo">
+            <md-content class="md-padding">
+                <img src="@Url.Content("~/Content/hangmanlogo.png")" style="width: 6cm" />
+                <form id="keyform">
+                    <md-input-container ng-hide="{{!angBooleanKeyNotYetEntered}}" style="margin: 0 auto; width: 8cm" class="md-block">
+                        <label>Enter a word for the other player to guess...</label>
+                        <input ng-model="angTargetWordByUser">
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-disabled="!angTargetWordByUser" ng-click="setWord()">ENTER</md-button>
+                </form>
+                <div ng-hide="angBooleanKeyNotYetEntered">
+                    <label>Key to give to the other player is:</label>
+                    <p><b>{{angServerGeneratedKey}}</b></p>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+
+
+

@@ -8,9 +8,16 @@ namespace GTWWebService.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Guess()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Guess The Word";
+
+            return View();
+        }
+
+        public ActionResult SetWord()
+        {
+            ViewBag.Title = "Set The Word";
 
             return View();
         }
